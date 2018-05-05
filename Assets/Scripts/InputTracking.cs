@@ -10,27 +10,17 @@ public class InputTracking : MonoBehaviour {
 
     public float Speed = 1f;
     private float m_InputZOffset = 10f;
-    private bool m_inputIsActive;
     private Camera m_Camera;
 
-
-    public bool InputIsActive
-    {
-        get
-        {
-            return m_inputIsActive;
-        }
-    }
 
 	// Use this for initialization
 	void Start () {
         m_Camera = FindObjectOfType<Camera>();
-        m_inputIsActive = false;
     }
 
     private bool HandleMouseInput()
     {
-        //if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             FollowInputPosition(Input.mousePosition);
             return true;
@@ -65,15 +55,7 @@ public class InputTracking : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        bool mouseInputRx = HandleMouseInput();
-        bool touchInputRx = HandleTouchInput();
-        if(!mouseInputRx && !touchInputRx)
-        {
-            this.transform.position = new Vector3(-100, -100, 0f);
-        }
-        else
-        {
-            m_inputIsActive = true;
-        }
+        HandleMouseInput();
+        HandleTouchInput();
     }
 }
