@@ -26,7 +26,7 @@ public class PhaserScript : MonoBehaviour
 
     private PhaserTarget m_currentTarget;
     static private int m_targetIndex = 0;
-    static private PhaserTarget[] m_potentialTargets;
+    static private PhaserTarget[] m_potentialTargets = new PhaserTarget[1];
     static private PhaseState m_state;
     static private float m_currentStateTime;
     static private float m_lineWidth;
@@ -165,9 +165,13 @@ public class PhaserScript : MonoBehaviour
 
     void HandlePhaserTargetChanges()
     {
-        if(m_state == PhaseState.Firing)
+        if(m_state == PhaseState.Firing || m_state == PhaseState.Idle)
         {
-            if(m_currentTarget == null && m_potentialTargets[m_targetIndex] != null)
+            if(m_potentialTargets == null)
+            {
+                return;
+            }
+            else if (m_currentTarget == null && m_potentialTargets[m_targetIndex] != null)
             {
                 m_currentTarget = m_potentialTargets[m_targetIndex];
             }
@@ -177,7 +181,8 @@ public class PhaserScript : MonoBehaviour
             }
             else if (m_currentTarget != m_potentialTargets[m_targetIndex])
             {
-
+                this.GetComponent<LineRenderer>().SetPosition(0, this.transform.position);
+                this.GetComponent<LineRenderer>().SetPosition(1, m_currentTarget.transform.position);
             }
             else if (m_currentTarget == m_potentialTargets[m_targetIndex])
             {
