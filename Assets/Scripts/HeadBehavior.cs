@@ -33,7 +33,6 @@ public class HeadBehavior : MonoBehaviour
 
         if (Mathf.Max(0.0f, _timer) == 0.0f)
         {
-            Debug.Log("Move head");
             Vector3 headPosition = rb.transform.position;
 
             //mineX = centerX + radius * cos(angle)
@@ -44,7 +43,6 @@ public class HeadBehavior : MonoBehaviour
             float newY = headPosition.y + movementForce * Mathf.Sin(randAngle);
 
             Vector3 movement = new Vector3(newX, newY, 0.0f);
-            Debug.Log(movement);
             rb.AddForce(movement,ForceMode.Impulse);
 
             _timer = Random.Range(minMoveTime, maxMoveTime);

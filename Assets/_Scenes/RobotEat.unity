@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 73083458}
   - component: {fileID: 73083459}
   - component: {fileID: 73083460}
+  - component: {fileID: 73083461}
   m_Layer: 0
   m_Name: Robot Head
   m_TagString: Untagged
@@ -289,6 +290,25 @@ SpringJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &73083461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 73083453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59eb8dfbf926fa4b8f07d41d7e68994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  necks:
+  - {fileID: 1916812917}
+  - {fileID: 1464547317}
+  - {fileID: 874068945}
+  - {fileID: 1179222342}
+  - {fileID: 566267332}
+  - {fileID: 624497541}
+  animateTime: 0.2
 --- !u!1001 &233692060
 Prefab:
   m_ObjectHideFlags: 0
@@ -333,6 +353,10 @@ Prefab:
       propertyPath: m_ConnectedBody
       value: 
       objectReference: {fileID: 1176371633}
+    - target: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
+      propertyPath: m_Name
+      value: RobotNeck6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
   m_IsPrefabParent: 0
@@ -382,7 +406,7 @@ Prefab:
       objectReference: {fileID: 624497544}
     - target: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
       propertyPath: m_Name
-      value: RobotNeck (1)
+      value: RobotNeck5
       objectReference: {fileID: 0}
     - target: {fileID: 59298441198430288, guid: 6a20832dfc98b6b48bda608ed6e25f95,
         type: 2}
@@ -412,6 +436,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &566267332 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95,
+    type: 2}
+  m_PrefabInternal: {fileID: 539645061}
 --- !u!4 &566267333 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4063300564650546, guid: 6a20832dfc98b6b48bda608ed6e25f95,
@@ -422,6 +451,11 @@ Rigidbody:
   m_PrefabParentObject: {fileID: 54531563709445032, guid: 6a20832dfc98b6b48bda608ed6e25f95,
     type: 2}
   m_PrefabInternal: {fileID: 539645061}
+--- !u!1 &624497541 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95,
+    type: 2}
+  m_PrefabInternal: {fileID: 233692060}
 --- !u!4 &624497542 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4063300564650546, guid: 6a20832dfc98b6b48bda608ed6e25f95,
@@ -473,7 +507,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
       propertyPath: m_Name
-      value: RobotNeck (4)
+      value: RobotNeck2
       objectReference: {fileID: 0}
     - target: {fileID: 59298441198430288, guid: 6a20832dfc98b6b48bda608ed6e25f95,
         type: 2}
@@ -554,7 +588,7 @@ Prefab:
       objectReference: {fileID: 1179222344}
     - target: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
       propertyPath: m_Name
-      value: RobotNeck (3)
+      value: RobotNeck3
       objectReference: {fileID: 0}
     - target: {fileID: 59298441198430288, guid: 6a20832dfc98b6b48bda608ed6e25f95,
         type: 2}
@@ -655,6 +689,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &874068945 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95,
+    type: 2}
+  m_PrefabInternal: {fileID: 787500595}
 --- !u!4 &874068946 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4063300564650546, guid: 6a20832dfc98b6b48bda608ed6e25f95,
@@ -779,7 +818,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
       propertyPath: m_Name
-      value: RobotNeck (2)
+      value: RobotNeck4
       objectReference: {fileID: 0}
     - target: {fileID: 59298441198430288, guid: 6a20832dfc98b6b48bda608ed6e25f95,
         type: 2}
@@ -920,6 +959,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1179222342 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95,
+    type: 2}
+  m_PrefabInternal: {fileID: 1074991190}
 --- !u!4 &1179222343 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4063300564650546, guid: 6a20832dfc98b6b48bda608ed6e25f95,
@@ -976,7 +1020,7 @@ Prefab:
       objectReference: {fileID: 1464547319}
     - target: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
       propertyPath: m_Name
-      value: RobotNeck (5)
+      value: RobotNeck1
       objectReference: {fileID: 0}
     - target: {fileID: 54531563709445032, guid: 6a20832dfc98b6b48bda608ed6e25f95,
         type: 2}
@@ -996,6 +1040,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1464547317 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95,
+    type: 2}
+  m_PrefabInternal: {fileID: 668473036}
 --- !u!4 &1464547318 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4063300564650546, guid: 6a20832dfc98b6b48bda608ed6e25f95,
@@ -1137,6 +1186,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1882217221}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1916812917 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95,
+    type: 2}
+  m_PrefabInternal: {fileID: 1428480206}
 --- !u!4 &1916812918 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4063300564650546, guid: 6a20832dfc98b6b48bda608ed6e25f95,
