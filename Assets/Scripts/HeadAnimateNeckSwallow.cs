@@ -27,10 +27,10 @@ public class HeadAnimateNeckSwallow : MonoBehaviour
     void Update()
     {
         AnimateSwallow();
-        if (Input.GetButton("Fire1"))
-        {
-            Swallow();
-        }
+        //if (Input.GetButton("Fire1"))
+        //{
+        //    Swallow();
+        //}
     }
 
     public void Swallow()
