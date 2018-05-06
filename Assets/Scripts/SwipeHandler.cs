@@ -55,11 +55,14 @@ public class SwipeHandler : MonoBehaviour
                 }
                 else
                 {
-                    target.TargetObject.GetComponent<Rigidbody>().AddForce(this.transform.position - target.TargetObject.transform.position);
-                    float targetRotationX = (this.transform.position.x - target.TargetObject.transform.position.x) + 1f;
-                    //float targetRotationY = (this.transform.position.y - target.TargetObject.transform.position.y);
-                    //Mathf.Abs(targetRotationX) > Mathf.Abs(targetRotationY) ? targetRotationX : targetRotationY
-                    target.TargetObject.GetComponent<SpaceObjectRotation>().SetRotation(targetRotationX, 10f);
+                    if(target != null && target.TargetObject != null)
+                    { 
+                        target.TargetObject.GetComponent<Rigidbody>().AddForce(this.transform.position - target.TargetObject.transform.position);
+                        float targetRotationX = (this.transform.position.x - target.TargetObject.transform.position.x) + 1f;
+                        //float targetRotationY = (this.transform.position.y - target.TargetObject.transform.position.y);
+                        //Mathf.Abs(targetRotationX) > Mathf.Abs(targetRotationY) ? targetRotationX : targetRotationY
+                        target.TargetObject.GetComponent<SpaceObjectRotation>().SetRotation(targetRotationX, 10f);
+                    }
                 }
             }
         }
