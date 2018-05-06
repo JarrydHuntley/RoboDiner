@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 73083459}
   - component: {fileID: 73083460}
   - component: {fileID: 73083461}
+  - component: {fileID: 73083462}
   m_Layer: 0
   m_Name: Robot Head
   m_TagString: Untagged
@@ -160,8 +161,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.94
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.89
+  m_Center: {x: -0.25, y: -0.87, z: 0}
 --- !u!212 &73083456
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -195,8 +196,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3e52f42a70073eb4f861efcf18b52c56, type: 3}
+  m_SortingOrder: 6
+  m_Sprite: {fileID: 21300000, guid: dd76159f918bc5b43a9017899b192157, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -213,8 +214,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 73083453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.468, y: 6.16, z: 0.18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.24, y: 6.48, z: 0.18}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1882217222}
   m_Father: {fileID: 0}
@@ -230,7 +231,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.002000004, y: 1.2199998, z: 0.18}
+  m_ConnectedAnchor: {x: 0.23, y: 1.54, z: 0.18}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -277,7 +278,7 @@ SpringJoint:
   m_ConnectedBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.65, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.468, y: 8.809999, z: 0.18}
+  m_ConnectedAnchor: {x: -0.24, y: 7.8050003, z: 0.18}
   serializedVersion: 2
   m_Spring: 0.2
   m_Damper: 0.02
@@ -309,6 +310,23 @@ MonoBehaviour:
   - {fileID: 566267332}
   - {fileID: 624497541}
   animateTime: 0.2
+--- !u!114 &73083462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 73083453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4606bd1ee817ec84d917156ae1d253ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: dd76159f918bc5b43a9017899b192157, type: 3}
+  - {fileID: 21300000, guid: ed8306f1171a22b49a674947977aac5a, type: 3}
+  - {fileID: 21300000, guid: 86cd4eb91cca65a43970c9418b71cc3f, type: 3}
+  - {fileID: 21300000, guid: 13cfb701291938346a891307f2a55c09, type: 3}
+  frameSpeed: 0.5
 --- !u!1001 &233692060
 Prefab:
   m_ObjectHideFlags: 0
@@ -356,6 +374,16 @@ Prefab:
     - target: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
       propertyPath: m_Name
       value: RobotNeck6
+      objectReference: {fileID: 0}
+    - target: {fileID: 59298441198430288, guid: 6a20832dfc98b6b48bda608ed6e25f95,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.46199998
+      objectReference: {fileID: 0}
+    - target: {fileID: 59298441198430288, guid: 6a20832dfc98b6b48bda608ed6e25f95,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 1.3970001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
@@ -866,8 +894,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1176371636}
   - component: {fileID: 1176371635}
-  - component: {fileID: 1176371634}
   - component: {fileID: 1176371633}
+  - component: {fileID: 1176371634}
+  - component: {fileID: 1176371637}
   m_Layer: 0
   m_Name: RobotBody
   m_TagString: Untagged
@@ -890,8 +919,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!65 &1176371634
-BoxCollider:
+--- !u!136 &1176371634
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -899,9 +928,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.45, y: 2.42, z: 0.2}
-  m_Center: {x: -0.03, y: -0.05, z: 0}
+  m_Radius: 1.74
+  m_Height: 7.81
+  m_Direction: 0
+  m_Center: {x: 0, y: -0.37, z: 0}
 --- !u!212 &1176371635
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -936,7 +966,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0679bdfe28953454387283fdfcdeb36d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d8db906e3daf974f8162e29429463de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -953,12 +983,27 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1176371632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.932, y: 1.763, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.28, y: 1.5, z: 0}
+  m_LocalScale: {x: 0.6355249, y: 0.6355249, z: 0.6355249}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1176371637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1176371632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4606bd1ee817ec84d917156ae1d253ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 3d8db906e3daf974f8162e29429463de, type: 3}
+  - {fileID: 21300000, guid: eaaccb9f7e791dc4798778c9134767f7, type: 3}
+  frameSpeed: 0.3
 --- !u!1 &1179222342 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95,
@@ -1021,21 +1066,6 @@ Prefab:
     - target: {fileID: 1814018591477904, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
       propertyPath: m_Name
       value: RobotNeck1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54531563709445032, guid: 6a20832dfc98b6b48bda608ed6e25f95,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 59298441198430288, guid: 6a20832dfc98b6b48bda608ed6e25f95,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 59298441198430288, guid: 6a20832dfc98b6b48bda608ed6e25f95,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.34800002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a20832dfc98b6b48bda608ed6e25f95, type: 2}
@@ -1115,7 +1145,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1882217221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.501, y: -0.594, z: 0}
+  m_LocalPosition: {x: -1.44, y: -1.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 73083457}
@@ -1177,7 +1207,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1882217226
 MeshFilter:
