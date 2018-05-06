@@ -664,7 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afba33c9d5e5f6346823138d070e345c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AcceptableLosses: 8
+  AcceptableLosses: 4
   Wins: 0
 --- !u!1001 &710233097
 Prefab:
@@ -721,7 +721,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4938174041776822, guid: e4f3cbb57ef5b51408abc157fd077678, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -9.398728
+      value: -6.36
       objectReference: {fileID: 0}
     - target: {fileID: 4938174041776822, guid: e4f3cbb57ef5b51408abc157fd077678, type: 2}
       propertyPath: m_LocalPosition.y
@@ -996,11 +996,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4381056071728372, guid: 5ce7c271635dd734dadcbdadd6502b15, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.4649067
+      value: -4.88
       objectReference: {fileID: 0}
     - target: {fileID: 4381056071728372, guid: 5ce7c271635dd734dadcbdadd6502b15, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.7284565
+      value: 2.29
       objectReference: {fileID: 0}
     - target: {fileID: 4381056071728372, guid: 5ce7c271635dd734dadcbdadd6502b15, type: 2}
       propertyPath: m_LocalPosition.z
