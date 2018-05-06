@@ -531,6 +531,8 @@ MonoBehaviour:
   PhaserInteractionLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  PhaserWarmupAudio: {fileID: 0}
+  PhaserFireAudio: {fileID: 0}
 --- !u!120 &596084952
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1038,6 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a075e54351e02e4380ef37654f7d276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveEatingObjectsHere: {fileID: 0}
 --- !u!1001 &996537008
 Prefab:
   m_ObjectHideFlags: 0
@@ -1323,6 +1326,8 @@ MonoBehaviour:
   PhaserInteractionLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  PhaserWarmupAudio: {fileID: 0}
+  PhaserFireAudio: {fileID: 0}
 --- !u!212 &1157163725
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1581,6 +1586,18 @@ Prefab:
       propertyPath: clang
       value: 
       objectReference: {fileID: 8300000, guid: b5f92f07f40eb3d47ade6be99c6b9dae, type: 3}
+    - target: {fileID: 4230659838226456, guid: 249ef729e21294e46922acfb207434cc, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884398004421602, guid: 249ef729e21294e46922acfb207434cc, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491032526131656, guid: 249ef729e21294e46922acfb207434cc, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 135724710205019362, guid: 249ef729e21294e46922acfb207434cc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 249ef729e21294e46922acfb207434cc, type: 2}

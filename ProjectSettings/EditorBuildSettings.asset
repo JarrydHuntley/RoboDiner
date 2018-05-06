@@ -4,4 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/TitleScreen.unity
+    guid: ae66932e9690eb44cb4f6c6618833887
+  - enabled: 1
+    path: Assets/_Scenes/EndScreen.unity
+    guid: 3cc9ce47ee790fc48b3d1af372ceb1b8
+  - enabled: 1
+    path: Assets/_Scenes/Main.unity
+    guid: f8950dfb8b5398d408e325c4984e3832
+  - enabled: 1
+    path: Assets/EaganScene.unity
+    guid: e9c0a0d5bbdc8f74da57115c89e8a8f2
