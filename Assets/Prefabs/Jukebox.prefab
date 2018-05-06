@@ -128,3 +128,4 @@ MonoBehaviour:
   DeathObject: {fileID: 1179641387658834, guid: b3de2ca4a91f59e4db47fd7e60b67fbf,
     type: 2}
   Shockwave: {fileID: 1034090756194944, guid: 9544de113e0af894385cb73e5f056d4f, type: 2}
+  TurnsRed: 0
