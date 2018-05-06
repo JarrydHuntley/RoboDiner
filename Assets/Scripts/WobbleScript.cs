@@ -5,6 +5,8 @@ using UnityEngine;
 public class WobbleScript : MonoBehaviour
 {
 
+
+
     private SpriteRenderer sr;
     [SerializeField]
     private Sprite[] sprites;

@@ -6,6 +6,12 @@ public class HeadAnimateNeckSwallow : MonoBehaviour
 {
 
     [SerializeField]
+    private AudioClip clang;
+
+    [SerializeField]
+    private AudioClip yay;
+
+    [SerializeField]
     private GameObject[] necks;
     private int currentNeck;
     [SerializeField]
@@ -14,12 +20,14 @@ public class HeadAnimateNeckSwallow : MonoBehaviour
 
     private float neckScale = .5f;
 
+    AudioSource audioPlayer;
 
     // Use this for initialization
     void Start()
     {
         currentNeck = -1;
         _timer = 0.0f;
+        audioPlayer = GetComponent<AudioSource>();
     }
 
 
@@ -37,6 +45,9 @@ public class HeadAnimateNeckSwallow : MonoBehaviour
     {
         currentNeck = 0;
         _timer = animateTime;
+
+        audioPlayer.clip = clang;
+        audioPlayer.Play();
     }
 
     public void AnimateSwallow()
@@ -49,6 +60,8 @@ public class HeadAnimateNeckSwallow : MonoBehaviour
             {
                 necks[currentNeck - 1].transform.localScale = new Vector3(1, 1, 1);
                 currentNeck = -1;
+                audioPlayer.clip = yay;
+                audioPlayer.Play();
             }
             else
             {
