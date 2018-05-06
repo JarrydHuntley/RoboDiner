@@ -205,6 +205,7 @@ public class PhaserScript : MonoBehaviour
             }
             else if (m_potentialTargets[m_targetIndex] == null)
             {
+                m_currentStateTime = 0f;
                 return;
             }
             else if (m_currentTarget != m_potentialTargets[m_targetIndex])

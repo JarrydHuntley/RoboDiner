@@ -26,7 +26,7 @@ public class PhaserTarget : MonoBehaviour {
     public void HandlePhaserEffects(PhaserScript phaser)
     {
         m_heat += Time.deltaTime * 1.1f;
-        Debug.Log(gameObject.name + " heat: " + m_heat);
+        //Debug.Log(gameObject.name + " heat: " + m_heat);
         Vector3 pos = this.transform.position;
         pos.x += GetWobble();
         pos.y += GetWobble();
