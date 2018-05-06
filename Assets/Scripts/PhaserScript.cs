@@ -249,7 +249,7 @@ public class PhaserScript : MonoBehaviour
     public void SetIdle()
     {
         ChangeState(PhaseState.PoweringDown);
-        m_currentStateTime = Random.Range(6f, 10f);
+        m_currentStateTime = Random.Range(3f, 6f);
         m_UseLastTargetLocation = true;
     }
 
