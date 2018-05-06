@@ -21,7 +21,7 @@ public class HeadEat : MonoBehaviour
     {
         if (other.gameObject.CompareTag("SpaceDebris") || other.gameObject.CompareTag("Astronaut"))
         {
-            Destroy(other);
+            Destroy(other.gameObject);
             FindObjectOfType<HeadAnimateNeckSwallow>().Swallow();
         }
     }

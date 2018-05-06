@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54124170775411222}
   - component: {fileID: 114613591952877820}
   - component: {fileID: 114979054488468970}
+  - component: {fileID: 114005827527357008}
   m_Layer: 9
   m_Name: Astronaut
   m_TagString: Astronaut
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1649455753451550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.98, y: -0.8, z: 0}
+  m_LocalPosition: {x: -2.23, y: 2.91, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,8 +58,23 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 72
+  m_Constraints: 56
   m_CollisionDetection: 1
+--- !u!114 &114005827527357008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649455753451550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4606bd1ee817ec84d917156ae1d253ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 0c7e1c82fc08e7a4cb1cb8f4751b0724, type: 3}
+  - {fileID: 21300000, guid: d90dc9b1359be2345a7bf79b19668a96, type: 3}
+  frameSpeed: 0.2
 --- !u!114 &114613591952877820
 MonoBehaviour:
   m_ObjectHideFlags: 1

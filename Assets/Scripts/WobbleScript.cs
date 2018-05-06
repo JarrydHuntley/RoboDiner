@@ -33,7 +33,7 @@ public class WobbleScript : MonoBehaviour
         {
             _frameTimer = frameSpeed;
             currentFrame = (currentFrame + 1) % sprites.Length;
-            Debug.Log(sprites[currentFrame]);
+            //Debug.Log(sprites[currentFrame]);
             sr.sprite = sprites[currentFrame];
         }
     }
