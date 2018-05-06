@@ -9,70 +9,55 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1555473125117642}
+  m_RootGameObject: {fileID: 1034090756194944}
   m_IsPrefabParent: 1
---- !u!1 &1555473125117642
+--- !u!1 &1034090756194944
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4823822621523662}
-  - component: {fileID: 212128207699062542}
-  - component: {fileID: 114687779787093986}
-  - component: {fileID: 114874467976945156}
-  m_Layer: 0
-  m_Name: Asteroid
-  m_TagString: Aestroid
+  - component: {fileID: 4179690701834110}
+  - component: {fileID: 212769303613184080}
+  - component: {fileID: 114990852077547338}
+  m_Layer: 9
+  m_Name: Shockwave
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4823822621523662
+--- !u!4 &4179690701834110
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555473125117642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.72, y: -4.09, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 1034090756194944}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.01, y: -2.4, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114687779787093986
+--- !u!114 &114990852077547338
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555473125117642}
+  m_GameObject: {fileID: 1034090756194944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9f74c7c5f136604599635ab9a37ff98, type: 3}
+  m_Script: {fileID: 11500000, guid: c812a469eadea164e837a13cfe07706c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114874467976945156
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555473125117642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e70d00b268f3b439d6ff0ebef7d89a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeathObject: {fileID: 1179641387658834, guid: b3de2ca4a91f59e4db47fd7e60b67fbf,
-    type: 2}
-  Shockwave: {fileID: 1034090756194944, guid: 9544de113e0af894385cb73e5f056d4f, type: 2}
---- !u!212 &212128207699062542
+--- !u!212 &212769303613184080
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555473125117642}
+  m_GameObject: {fileID: 1034090756194944}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -100,13 +85,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5e984c807f1b25c46be9599f297f1d21, type: 3}
+  m_SortingOrder: -10
+  m_Sprite: {fileID: 21300000, guid: 862c3182c44a19a45939149aa5364df4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.76, y: 1.91}
+  m_Size: {x: 3.01, y: 2.57}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

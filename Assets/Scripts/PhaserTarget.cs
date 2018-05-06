@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class PhaserTarget : MonoBehaviour {
     public GameObject DeathObject;
+    public GameObject Shockwave;
     private float m_heat = 0.0f;
     private Color m_defaultColor;
 
@@ -19,13 +20,23 @@ public class PhaserTarget : MonoBehaviour {
     {
         m_heat += Time.deltaTime * 1.1f;
         Debug.Log(gameObject.name + " heat: " + m_heat);
+        Vector3 pos = this.transform.position;
+        pos.x += GetWobble();
+        pos.y += GetWobble();
+        this.transform.position = pos;
         if (m_heat > 3.01f)
         {
             Instantiate(DeathObject, this.transform.position, this.transform.rotation);
+            Instantiate(Shockwave, this.transform.position, this.transform.rotation); 
             GameObject.Destroy(this.gameObject);
             phaser.SetIdle();
         }
         
+    }
+
+    float GetWobble()
+    {
+        return Random.Range(0.0f, 0.01f);
     }
 
     void Update()

@@ -40,7 +40,7 @@ public class PhaserScript : MonoBehaviour
     {
         m_state = state;
         m_currentStateTime = GetTimeoutForState();
-        Debug.Log("Phaser: Changing state to: " + m_state.ToString());
+        //Debug.Log("Phaser: Changing state to: " + m_state.ToString());
         if (state == PhaseState.WarmingUp)
         {
             m_currentTarget = null;
@@ -58,7 +58,7 @@ public class PhaserScript : MonoBehaviour
             {
                 if (m_potentialTargets[x].tag == "Astronaut" || m_potentialTargets[x].tag == "Aestroid")
                 {
-                    Debug.Log("Phaser: Target Found!");
+                    //Debug.Log("Phaser: Target Found!");
                     m_targetIndex = x;
                     m_currentTarget = m_potentialTargets[x];
                     m_UseLastTargetLocation = false;
@@ -69,7 +69,7 @@ public class PhaserScript : MonoBehaviour
         // If we can't find a target, then we return our state to idle (nothing to fire at)
         if (m_currentTarget == null)
         {
-            Debug.Log("Phaser: No Target Found!");
+            //Debug.Log("Phaser: No Target Found!");
             ChangeState(PhaseState.Idle);
         }
     }
@@ -199,7 +199,7 @@ public class PhaserScript : MonoBehaviour
             {
                 return;
             }
-            else if (m_currentTarget == null && m_potentialTargets[m_targetIndex] != null)
+            else if (m_currentTarget == null && m_potentialTargets.Length - 1 >= m_targetIndex && m_potentialTargets[m_targetIndex] != null)
             {
                 m_currentTarget = m_potentialTargets[m_targetIndex];
             }
@@ -249,7 +249,7 @@ public class PhaserScript : MonoBehaviour
     public void SetIdle()
     {
         ChangeState(PhaseState.PoweringDown);
-        m_currentStateTime = Random.Range(6f, 10f);
+        m_currentStateTime = Random.Range(3f, 6f);
         m_UseLastTargetLocation = true;
     }
 
