@@ -208,9 +208,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1538fd02d5ca21b4989d23ec46484089, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.327
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -219,7 +219,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -422,8 +422,8 @@ MonoBehaviour:
   PhaserInteractionLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  PhaserWarmupAudio: {fileID: 0}
-  PhaserFireAudio: {fileID: 0}
+  PhaserWarmupAudio: {fileID: 82480312939836266}
+  PhaserFireAudio: {fileID: 82268000764747934}
 --- !u!114 &114585046099613966
 MonoBehaviour:
   m_ObjectHideFlags: 1

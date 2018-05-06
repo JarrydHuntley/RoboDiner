@@ -83,20 +83,20 @@ public class PhaserScript : MonoBehaviour
         {
             if(m_state == PhaseState.Idle)
             {
-                if (MasterInstance) PhaserFireAudio.Stop();
-                if (MasterInstance) PhaserWarmupAudio.Play();
+                PhaserFireAudio.Stop();
+                PhaserWarmupAudio.Play();
                 ChangeState(PhaseState.WarmingUp);
             }
             else if(m_state == PhaseState.WarmingUp)
             {
-                if (MasterInstance) PhaserWarmupAudio.Stop();
-                if (MasterInstance) PhaserFireAudio.Play();
+                PhaserWarmupAudio.Stop();
+                PhaserFireAudio.Play();
                 ChangeState(PhaseState.Firing);
                 SelectTarget();
             }
             else
             {
-                if (MasterInstance) PhaserFireAudio.Stop();
+                PhaserFireAudio.Stop();
                 ChangeState(PhaseState.Idle);
             }
         }
@@ -257,8 +257,7 @@ public class PhaserScript : MonoBehaviour
     public void SetIdle()
     {
         ChangeState(PhaseState.PoweringDown);
-        if (MasterInstance) PhaserFireAudio.Stop();
-        if (MasterInstance) PhaserWarmupAudio.Stop();
+        PhaserFireAudio.Stop();
         m_currentStateTime = Random.Range(3f, 6f);
         m_UseLastTargetLocation = true;
     }
@@ -272,8 +271,8 @@ public class PhaserScript : MonoBehaviour
         {
             m_currentTarget = null;
             m_UseLastTargetLocation = false;
-            if (MasterInstance) PhaserFireAudio.Stop();
-            if (MasterInstance) PhaserWarmupAudio.Stop();
+            PhaserFireAudio.Stop();
+            PhaserWarmupAudio.Stop();
         }
         m_lastState = m_state;
         
