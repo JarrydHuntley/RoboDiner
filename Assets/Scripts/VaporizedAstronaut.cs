@@ -5,7 +5,7 @@ using UnityEngine;
 public class VaporizedAstronaut : MonoBehaviour {
     public Sprite frameA;
     public Sprite frameB;
-    private float m_DeathTimer = 0.15f;
+    private float m_DeathTimer = 0.25f;
 
 	// Use this for initialization
 	void Start () {
