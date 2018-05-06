@@ -24,7 +24,7 @@ public class PhaserTarget : MonoBehaviour {
         pos.x += GetWobble();
         pos.y += GetWobble();
         this.transform.position = pos;
-        if (m_heat > 3.01f)
+        if (m_heat > 3.01f && DeathObject != null && Shockwave != null)
         {
             Instantiate(DeathObject, this.transform.position, this.transform.rotation);
             Instantiate(Shockwave, this.transform.position, this.transform.rotation); 
