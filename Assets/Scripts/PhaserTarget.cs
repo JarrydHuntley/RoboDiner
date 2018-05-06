@@ -8,14 +8,17 @@ using UnityEngine;
 public class PhaserTarget : MonoBehaviour {
     public GameObject DeathObject;
     public GameObject Shockwave;
+    public bool TurnsRed = true;
     private float m_heat = 0.0f;
     private Color m_defaultColor;
     private bool m_isSafe = false;
+    private ScoreBoard board;
 
     void Start()
     {
         m_isSafe = false;
-        m_defaultColor = gameObject.GetComponent<SpriteRenderer>().color;
+        if(TurnsRed)m_defaultColor = gameObject.GetComponent<SpriteRenderer>().color;
+        board = FindObjectOfType<ScoreBoard>();
     }
 
     public void MarkSafe()
@@ -31,12 +34,21 @@ public class PhaserTarget : MonoBehaviour {
         pos.x += GetWobble();
         pos.y += GetWobble();
         this.transform.position = pos;
-        if(m_isSafe)
+
+        float maxHeat = 2.6f;
+        if (TurnsRed) maxHeat = 2;
+
+        if (m_isSafe)
         {
+            board.RecordWin();
             phaser.SetIdle();
         }
-        else if (m_heat > 3.01f && DeathObject != null && Shockwave != null)
+        else if (m_heat > maxHeat && DeathObject != null && Shockwave != null)
         {
+            if(this.gameObject.tag == "Astronaut")
+            {
+                board.RecordLoss();
+            }
             phaser.SetIdle();
             Instantiate(DeathObject, this.transform.position, this.transform.rotation);
             Instantiate(Shockwave, this.transform.position, this.transform.rotation); 
@@ -55,17 +67,23 @@ public class PhaserTarget : MonoBehaviour {
         if(m_heat > 0f)
         {
             m_heat -= Time.deltaTime;
-            Color newColor = m_defaultColor;
-            newColor.r += m_heat;
-            newColor.b -= m_heat;
-            newColor.g -= m_heat;
-            //Debug.Log(gameObject.name + " heat: " + m_heat);
-            gameObject.GetComponent<SpriteRenderer>().material.color = newColor;
+            if (TurnsRed)
+            {
+                Color newColor = m_defaultColor;
+                newColor.r += m_heat;
+                newColor.b -= m_heat;
+                newColor.g -= m_heat;
+                //Debug.Log(gameObject.name + " heat: " + m_heat);
+                gameObject.GetComponent<SpriteRenderer>().material.color = newColor;
+            }
         }
         else
         {
             m_heat = 0f;
-            gameObject.GetComponent<SpriteRenderer>().material.color = m_defaultColor;
+            if (TurnsRed)
+            {
+                gameObject.GetComponent<SpriteRenderer>().material.color = m_defaultColor;
+            }
         }
     }
 }

@@ -52,9 +52,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa9b7b16691adb478c2157d468a3000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AstroNautPrefab: {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959,
-    type: 2}
-  TargetObject: {fileID: 0}
+  ObjectPrefabs:
+  - {fileID: 1792062345270988, guid: 5ce7c271635dd734dadcbdadd6502b15, type: 2}
+  - {fileID: 1219556342202518, guid: 601e26bc85e0ada458df2ace2c3fde0a, type: 2}
+  - {fileID: 1127816846997386, guid: ac21b59742ebf74438dba6e66b16811a, type: 2}
+  - {fileID: 1223677204976054, guid: 6762fb29b96579944b4cb79e8b1e5e77, type: 2}
+  - {fileID: 1250429715600022, guid: 477ddc77e991ede4e884a101e02cb848, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  - {fileID: 1649455753451550, guid: 2f897029d444d94439af281d6261a959, type: 2}
+  TargetObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   MinTimeToSpawn: 3
   MaxTimeToSpawn: 6
 --- !u!212 &212601584955320128

@@ -91,6 +91,10 @@ public class PhaserScript : MonoBehaviour
             {
                 PhaserWarmupAudio.Stop();
                 PhaserFireAudio.Play();
+                if (MinIdleTime > 0) MinIdleTime -= Time.deltaTime;
+                else MinIdleTime = 0f;
+                if (MaxIdleTime > 0.5f) MaxIdleTime -= Time.deltaTime;
+                else MaxIdleTime = 0f;
                 ChangeState(PhaseState.Firing);
                 SelectTarget();
             }
@@ -258,7 +262,7 @@ public class PhaserScript : MonoBehaviour
     {
         ChangeState(PhaseState.PoweringDown);
         PhaserFireAudio.Stop();
-        m_currentStateTime = Random.Range(3f, 6f);
+        m_currentStateTime = Random.Range(MinIdleTime, MaxIdleTime);
         m_UseLastTargetLocation = true;
     }
 

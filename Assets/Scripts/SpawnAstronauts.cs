@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawnAstronauts : MonoBehaviour
 {
-    public GameObject AstroNautPrefab;
-    public GameObject TargetObject;
+    public GameObject[] ObjectPrefabs;
+    public GameObject[] TargetObjects;
     public float MinTimeToSpawn = 3f;
     public float MaxTimeToSpawn = 6f;
     private float m_Timer = 3f;
@@ -23,8 +23,15 @@ public class SpawnAstronauts : MonoBehaviour
         if (m_Timer < 0f)
         {
             m_Timer = Random.Range(MinTimeToSpawn, MaxTimeToSpawn);
-            GameObject newObject = (GameObject)Instantiate(AstroNautPrefab, this.transform.position, this.transform.rotation);
-            newObject.GetComponent<Rigidbody>().AddForce((TargetObject.transform.position - this.transform.position) * 6f);
+
+            int spawnElement = (int)Random.Range(0f, (float)ObjectPrefabs.Length);
+            int targetElement = (int)Random.Range(0f, (float)TargetObjects.Length);
+
+            Debug.Log("Spawn el: " + spawnElement.ToString());
+            Debug.Log("Spawn ta: " + targetElement.ToString());
+
+            GameObject newObject = (GameObject)Instantiate(ObjectPrefabs[spawnElement], this.transform.position, this.transform.rotation);
+            newObject.GetComponent<Rigidbody>().AddForce((TargetObjects[targetElement].transform.position - this.transform.position) * 6f);
         }
     }
 }
