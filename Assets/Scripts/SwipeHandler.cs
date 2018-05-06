@@ -55,8 +55,9 @@ public class SwipeHandler : MonoBehaviour
                 }
                 else
                 {
-                    if(target != null && target.TargetObject != null)
+                    if(target != null && target.TargetObject != null && target.TargetObject.GetComponent<Rigidbody>())
                     { 
+                        
                         target.TargetObject.GetComponent<Rigidbody>().AddForce(this.transform.position - target.TargetObject.transform.position);
                         float targetRotationX = (this.transform.position.x - target.TargetObject.transform.position.x) + 1f;
                         //float targetRotationY = (this.transform.position.y - target.TargetObject.transform.position.y);

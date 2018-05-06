@@ -10,10 +10,17 @@ public class PhaserTarget : MonoBehaviour {
     public GameObject Shockwave;
     private float m_heat = 0.0f;
     private Color m_defaultColor;
+    private bool m_isSafe = false;
 
     void Start()
     {
+        m_isSafe = false;
         m_defaultColor = gameObject.GetComponent<SpriteRenderer>().color;
+    }
+
+    public void MarkSafe(PhaserScript phaser)
+    {
+        m_isSafe = true;
     }
     
     public void HandlePhaserEffects(PhaserScript phaser)
@@ -24,7 +31,11 @@ public class PhaserTarget : MonoBehaviour {
         pos.x += GetWobble();
         pos.y += GetWobble();
         this.transform.position = pos;
-        if (m_heat > 3.01f && DeathObject != null && Shockwave != null)
+        if(m_isSafe)
+        {
+            phaser.SetIdle();
+        }
+        else if (m_heat > 3.01f && DeathObject != null && Shockwave != null)
         {
             Instantiate(DeathObject, this.transform.position, this.transform.rotation);
             Instantiate(Shockwave, this.transform.position, this.transform.rotation); 
@@ -49,7 +60,7 @@ public class PhaserTarget : MonoBehaviour {
             newColor.r += m_heat;
             newColor.b -= m_heat;
             newColor.g -= m_heat;
-            Debug.Log(gameObject.name + " heat: " + m_heat);
+            //Debug.Log(gameObject.name + " heat: " + m_heat);
             gameObject.GetComponent<SpriteRenderer>().material.color = newColor;
         }
         else
