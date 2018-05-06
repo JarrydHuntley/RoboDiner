@@ -62,7 +62,8 @@ public class SwipeHandler : MonoBehaviour
                         float targetRotationX = (this.transform.position.x - target.TargetObject.transform.position.x) + 1f;
                         //float targetRotationY = (this.transform.position.y - target.TargetObject.transform.position.y);
                         //Mathf.Abs(targetRotationX) > Mathf.Abs(targetRotationY) ? targetRotationX : targetRotationY
-                        target.TargetObject.GetComponent<SpaceObjectRotation>().SetRotation(targetRotationX, 10f);
+                        if(target.TargetObject.GetComponent<SpaceObjectRotation>())
+                            target.TargetObject.GetComponent<SpaceObjectRotation>().SetRotation(targetRotationX, 10f);
                     }
                 }
             }

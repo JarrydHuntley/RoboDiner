@@ -17,6 +17,8 @@ public class PhaserScript : MonoBehaviour
     public float MaxFiringScale = 0.1f;
     public float WobbleSize = 0.01f;
     public LayerMask PhaserInteractionLayerMask;
+    public AudioSource PhaserWarmupAudio;
+    public AudioSource PhaserFireAudio;
 
     private PhaserTarget m_currentTarget;
     static private int m_targetIndex = 0;
@@ -81,15 +83,20 @@ public class PhaserScript : MonoBehaviour
         {
             if(m_state == PhaseState.Idle)
             {
+                if (MasterInstance) PhaserFireAudio.Stop();
+                if (MasterInstance) PhaserWarmupAudio.Play();
                 ChangeState(PhaseState.WarmingUp);
             }
             else if(m_state == PhaseState.WarmingUp)
             {
+                if (MasterInstance) PhaserWarmupAudio.Stop();
+                if (MasterInstance) PhaserFireAudio.Play();
                 ChangeState(PhaseState.Firing);
                 SelectTarget();
             }
             else
             {
+                if (MasterInstance) PhaserFireAudio.Stop();
                 ChangeState(PhaseState.Idle);
             }
         }
@@ -250,6 +257,8 @@ public class PhaserScript : MonoBehaviour
     public void SetIdle()
     {
         ChangeState(PhaseState.PoweringDown);
+        if (MasterInstance) PhaserFireAudio.Stop();
+        if (MasterInstance) PhaserWarmupAudio.Stop();
         m_currentStateTime = Random.Range(3f, 6f);
         m_UseLastTargetLocation = true;
     }
@@ -263,6 +272,8 @@ public class PhaserScript : MonoBehaviour
         {
             m_currentTarget = null;
             m_UseLastTargetLocation = false;
+            if (MasterInstance) PhaserFireAudio.Stop();
+            if (MasterInstance) PhaserWarmupAudio.Stop();
         }
         m_lastState = m_state;
         

@@ -18,7 +18,7 @@ public class PhaserTarget : MonoBehaviour {
         m_defaultColor = gameObject.GetComponent<SpriteRenderer>().color;
     }
 
-    public void MarkSafe(PhaserScript phaser)
+    public void MarkSafe()
     {
         m_isSafe = true;
     }
@@ -37,10 +37,10 @@ public class PhaserTarget : MonoBehaviour {
         }
         else if (m_heat > 3.01f && DeathObject != null && Shockwave != null)
         {
+            phaser.SetIdle();
             Instantiate(DeathObject, this.transform.position, this.transform.rotation);
             Instantiate(Shockwave, this.transform.position, this.transform.rotation); 
             GameObject.Destroy(this.gameObject);
-            phaser.SetIdle();
         }
         
     }
@@ -52,7 +52,6 @@ public class PhaserTarget : MonoBehaviour {
 
     void Update()
     {
-        
         if(m_heat > 0f)
         {
             m_heat -= Time.deltaTime;

@@ -17,7 +17,7 @@ public class HeadEat : MonoBehaviour
     {
         if(m_eatingTarget != null)
         {
-            m_eatingTarget.transform.position = Vector3.Lerp(m_eatingTarget.transform.position, MoveEatingObjectsHere.transform.position, Time.deltaTime * 3f);
+            m_eatingTarget.transform.position = Vector3.Lerp(m_eatingTarget.transform.position, MoveEatingObjectsHere.transform.position, Time.deltaTime * 6f);
             m_eatingTarget.transform.localScale = Vector3.Lerp(m_eatingTarget.transform.localScale, Vector3.zero, Time.deltaTime * 3f);
         }
     }
@@ -31,6 +31,11 @@ public class HeadEat : MonoBehaviour
             {
                 m_eatingTarget.GetComponent<CapsuleCollider>().enabled = false;
             }
+            if(m_eatingTarget.GetComponent<PhaserTarget>())
+            {
+                m_eatingTarget.GetComponent<PhaserTarget>().MarkSafe();
+            }
+            
             Destroy(other.gameObject, 1f);
             FindObjectOfType<HeadAnimateNeckSwallow>().Swallow();
         }
