@@ -23,6 +23,8 @@ public class PhaserTarget : MonoBehaviour {
 
     public void MarkSafe()
     {
+        if(this.gameObject.tag == "Astronaut")
+            board.RecordWin();
         m_isSafe = true;
     }
     
@@ -40,7 +42,6 @@ public class PhaserTarget : MonoBehaviour {
 
         if (m_isSafe)
         {
-            board.RecordWin();
             phaser.SetIdle();
         }
         else if (m_heat > maxHeat && DeathObject != null && Shockwave != null)
