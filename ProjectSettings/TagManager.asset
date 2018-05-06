@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Astronaut
   - SpaceDebris
+  - Aestroid
   layers:
   - Default
   - TransparentFX

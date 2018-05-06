@@ -18,14 +18,6 @@ public class PhaserScript : MonoBehaviour
     public float WobbleSize = 0.01f;
     public LayerMask PhaserInteractionLayerMask;
 
-    private enum PhaseState
-    {
-        Idle,
-        WarmingUp,
-        Firing,
-        PoweringDown
-    }
-
     private PhaserTarget m_currentTarget;
     static private int m_targetIndex = 0;
     static private PhaserTarget[] m_potentialTargets = new PhaserTarget[1];
@@ -53,6 +45,7 @@ public class PhaserScript : MonoBehaviour
         {
             m_currentTarget = null;
         }
+        this.GetComponentInParent<FancyDinerBehavior>().LaserStateChange(m_state);
     }
 
     void SelectTarget()
@@ -63,7 +56,7 @@ public class PhaserScript : MonoBehaviour
         {
             for (int x = 0; x < m_potentialTargets.Length; x++)
             {
-                if (m_potentialTargets[x].tag == "Astronaut")
+                if (m_potentialTargets[x].tag == "Astronaut" || m_potentialTargets[x].tag == "Aestroid")
                 {
                     Debug.Log("Phaser: Target Found!");
                     m_targetIndex = x;
