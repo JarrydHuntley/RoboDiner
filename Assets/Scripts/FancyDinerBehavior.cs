@@ -29,6 +29,6 @@ public class FancyDinerBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        this.transform.position = Vector3.Slerp(this.transform.position, m_currentTarget.transform.position, Time.deltaTime);
+        this.transform.position = Vector3.Slerp(this.transform.position, m_currentTarget.transform.position, Time.deltaTime / 2f);
 	}
 }
