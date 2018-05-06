@@ -16,24 +16,22 @@ public class PhaserScript : MonoBehaviour
     public float MinFiringScale = 0f;
     public float MaxFiringScale = 0.1f;
     public float WobbleSize = 0.01f;
-
-    private enum PhaseState
-    {
-        Idle,
-        WarmingUp,
-        Firing
-    }
+    public LayerMask PhaserInteractionLayerMask;
 
     private PhaserTarget m_currentTarget;
     static private int m_targetIndex = 0;
-    static private PhaserTarget[] m_potentialTargets;
+    static private PhaserTarget[] m_potentialTargets = new PhaserTarget[1];
     static private PhaseState m_state;
+    static private PhaseState m_lastState;
     static private float m_currentStateTime;
     static private float m_lineWidth;
     private bool m_wobbleOn = false;
+    static private bool m_UseLastTargetLocation = false;
+    private Vector3 m_lastTargetLocation;
 
     void Start()
     {
+        m_UseLastTargetLocation = false;
         m_lineWidth = 0f;
         ChangeState(PhaseState.Idle);
     }
@@ -43,6 +41,11 @@ public class PhaserScript : MonoBehaviour
         m_state = state;
         m_currentStateTime = GetTimeoutForState();
         Debug.Log("Phaser: Changing state to: " + m_state.ToString());
+        if (state == PhaseState.WarmingUp)
+        {
+            m_currentTarget = null;
+        }
+        this.GetComponentInParent<FancyDinerBehavior>().LaserStateChange(m_state);
     }
 
     void SelectTarget()
@@ -53,11 +56,12 @@ public class PhaserScript : MonoBehaviour
         {
             for (int x = 0; x < m_potentialTargets.Length; x++)
             {
-                if (m_potentialTargets[x].tag == "Astronaut")
+                if (m_potentialTargets[x].tag == "Astronaut" || m_potentialTargets[x].tag == "Aestroid")
                 {
                     Debug.Log("Phaser: Target Found!");
                     m_targetIndex = x;
                     m_currentTarget = m_potentialTargets[x];
+                    m_UseLastTargetLocation = false;
                 }
             }
         }
@@ -117,7 +121,7 @@ public class PhaserScript : MonoBehaviour
 
     void HandleSizeChanges(float wobble)
     {
-        if (m_state == PhaseState.Idle)
+        if (m_state == PhaseState.Idle || m_state == PhaseState.PoweringDown)
         {
             Vector3 scale = this.transform.localScale;
             scale.x = Mathf.Lerp(scale.x, MinFiringScale, Time.deltaTime * 2f);
@@ -151,9 +155,16 @@ public class PhaserScript : MonoBehaviour
         }
         else if (m_state == PhaseState.WarmingUp)
         {
-            m_lineWidth = Mathf.Lerp(m_lineWidth, MinFiringScale, Time.deltaTime);
+            m_lineWidth = Mathf.Lerp(m_lineWidth, MinFiringScale, Time.deltaTime * 2f);
             GetComponent<LineRenderer>().startWidth = (m_lineWidth / 2f);
             GetComponent<LineRenderer>().endWidth = m_lineWidth;
+        }
+        else if (m_state == PhaseState.PoweringDown)
+        {
+            m_lineWidth = Mathf.Lerp(m_lineWidth, MinFiringScale, Time.deltaTime * 4f);
+            GetComponent<LineRenderer>().startWidth = (m_lineWidth / 2f);
+            GetComponent<LineRenderer>().endWidth = m_lineWidth;
+
         }
         else
         {
@@ -163,11 +174,32 @@ public class PhaserScript : MonoBehaviour
         }
     }
 
+    void SetLineRendererPosition()
+    {
+
+        Vector3 targetLocation;
+        if (!m_UseLastTargetLocation)
+        {
+            targetLocation = m_currentTarget.transform.position;
+            m_lastTargetLocation = targetLocation;
+        }
+        else
+        {
+            targetLocation = m_lastTargetLocation;
+        }
+        this.GetComponent<LineRenderer>().SetPosition(0, this.transform.position);
+        this.GetComponent<LineRenderer>().SetPosition(1, targetLocation);
+    }
+
     void HandlePhaserTargetChanges()
     {
-        if(m_state == PhaseState.Firing)
+        if(m_state == PhaseState.Firing || m_state == PhaseState.Idle)
         {
-            if(m_currentTarget == null && m_potentialTargets[m_targetIndex] != null)
+            if(m_potentialTargets == null)
+            {
+                return;
+            }
+            else if (m_currentTarget == null && m_potentialTargets[m_targetIndex] != null)
             {
                 m_currentTarget = m_potentialTargets[m_targetIndex];
             }
@@ -177,22 +209,62 @@ public class PhaserScript : MonoBehaviour
             }
             else if (m_currentTarget != m_potentialTargets[m_targetIndex])
             {
-
+                SetLineRendererPosition();
             }
             else if (m_currentTarget == m_potentialTargets[m_targetIndex])
             {
-                this.GetComponent<LineRenderer>().SetPosition(0, this.transform.position);
-                this.GetComponent<LineRenderer>().SetPosition(1, m_currentTarget.transform.position);
+                SetLineRendererPosition();
             }
             
         }
+    }
 
+    void SwitchTargetIfInRaycast()
+    {
+        if (m_state == PhaseState.WarmingUp || m_currentTarget == null)
+            return;
+
+        RaycastHit hit;
+        //Debug.DrawRay(transform.position, m_currentTarget.transform.position - transform.position, Color.yellow);
+        Physics.Raycast(transform.position, (m_currentTarget.transform.position - transform.position), out hit, PhaserInteractionLayerMask);
+        if (hit.transform.gameObject != null)
+        {
+            
+            PhaserTarget phaserTarget = hit.transform.gameObject.GetComponent<PhaserTarget>();
+            if (phaserTarget != null && m_currentTarget != phaserTarget)
+            {
+                m_currentTarget = phaserTarget;
+            }
+        }
+    }
+
+    void HandlePhaserEffectsForTarget()
+    {
+        if(m_currentTarget != null && m_state == PhaseState.Firing)
+        {
+            m_currentTarget.HandlePhaserEffects(this);
+        }
+    }
+
+    public void SetIdle()
+    {
+        ChangeState(PhaseState.PoweringDown);
+        m_currentStateTime = Random.Range(6f, 10f);
+        m_UseLastTargetLocation = true;
     }
 
 	// Update is called once per frame
 	void Update ()
     {
         float wobble = GetWobble();
+
+        if (m_lastState != m_state && m_state == PhaseState.WarmingUp && m_lastState == PhaseState.Idle)
+        {
+            m_currentTarget = null;
+            m_UseLastTargetLocation = false;
+        }
+        m_lastState = m_state;
+        
         if(MasterInstance)
         {
             HandleStateChanges();
@@ -200,6 +272,7 @@ public class PhaserScript : MonoBehaviour
         HandlePhaserTargetChanges();
         HandleSizeChanges(wobble);
         HandlePhaserSizeChanges(wobble);
-        
+        SwitchTargetIfInRaycast();
+        HandlePhaserEffectsForTarget();
     }
 }
