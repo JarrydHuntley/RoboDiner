@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScoreBoard : MonoBehaviour {
-    public int AcceptableLosses = 8;
+    public int AcceptableLosses = 20;
     public int Wins = 0;
 
     public void RecordLoss()

@@ -37,8 +37,8 @@ public class PhaserTarget : MonoBehaviour {
         pos.y += GetWobble();
         this.transform.position = pos;
 
-        float maxHeat = 2.6f;
-        if (TurnsRed) maxHeat = 2;
+        float maxHeat = 2.1f;
+        if (TurnsRed) maxHeat = 2.8f;
 
         if (m_isSafe)
         {
